@@ -3,6 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
+
   const app = await NestFactory.create(AppModule);
 
   app.useGlobalPipes(
@@ -18,6 +19,8 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api/v2'); // agregar prefijo al backend
 
-  await app.listen(3000);
+  await app.listen(AppModule.port, () => {
+    console.log('App corriendo en ', AppModule.port);
+  });
 }
 bootstrap();

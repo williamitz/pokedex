@@ -18,6 +18,11 @@ npm i -g @nestjs/cli
 docker-compose up -d
 ```
 
+5. Iniciar seed
+```
+llamar al servicio http://localhost:300/v1/seed
+```
+
 ## Stack usado
 *Mongo DB
 *Nest

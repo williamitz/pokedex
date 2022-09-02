@@ -5,24 +5,34 @@ import { join } from 'path';
 import { PokemonModule } from './pokemon/pokemon.module';
 import { SeedModule } from './seed/seed.module';
 import { CommonModule } from './common/common.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { EnvConfiguration } from './common/env.config';
 
 @Module({
   imports: [
+
+    ConfigModule.forRoot({
+      load: [ EnvConfiguration ]
+    }),
 
     ServeStaticModule.forRoot({
       rootPath: join( __dirname, '../public' )
     }),
     
-    MongooseModule.forRoot('mongodb://localhost:27017/nest-pokemon'),
+    MongooseModule.forRoot( process.env.MONGO_URI ),
     
     PokemonModule,
-    
     SeedModule,
-    
     CommonModule,
-    
-
     
   ],
 })
-export class AppModule {}
+export class AppModule {
+
+  static port: number;
+
+  constructor( private readonly _env: ConfigService ) {
+    AppModule.port = this._env.getOrThrow('port');
+  }
+
+}
