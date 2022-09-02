@@ -4,6 +4,7 @@ import { SeedController } from './seed.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Pokemon, PokemonSchema } from '../pokemon/entities/pokemon.entity';
 import { PokemonModule } from '../pokemon/pokemon.module';
+import { CommonModule } from 'src/common/common.module';
 
 @Module({
   controllers: [SeedController],
@@ -17,7 +18,8 @@ import { PokemonModule } from '../pokemon/pokemon.module';
     //   }
     // ])
     
-    PokemonModule
+    PokemonModule,
+    CommonModule,
   ]
 })
 export class SeedModule {}

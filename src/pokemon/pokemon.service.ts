@@ -28,8 +28,14 @@ export class PokemonService {
 
   }
 
-  async findAll() {
-    return await this._pokemonmodel.find();
+  async findAll( page: number, limit: number ) {
+    
+    let skip = ( page - 1 ) * limit;
+
+    return await this._pokemonmodel.find()
+    .skip( skip )
+    .limit( limit )
+    .select('-__v');
   }
 
   async findOne(id: string) {
