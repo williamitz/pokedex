@@ -35,3 +35,10 @@ llamar al servicio http://localhost:300/v1/seed
 ## Stack usado
 *Mongo DB
 *Nest
+
+# Notas
+Heroku deploy changes:
+```
+git commit -m "fix: new change"
+git push heroku main
+```
