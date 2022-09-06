@@ -18,7 +18,16 @@ npm i -g @nestjs/cli
 docker-compose up -d
 ```
 
-5. Iniciar seed
+5. Clonar archivo __.env.template__ y renombrar por __.env__
+
+6. Definir variables de entorno en archivo __.env__
+
+7. Levantar aplicación
+```
+yarn start:dev
+```
+
+8. Iniciar seed
 ```
 llamar al servicio http://localhost:300/v1/seed
 ```

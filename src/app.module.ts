@@ -6,13 +6,15 @@ import { PokemonModule } from './pokemon/pokemon.module';
 import { SeedModule } from './seed/seed.module';
 import { CommonModule } from './common/common.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { EnvConfiguration } from './common/env.config';
+import { EnvConfiguration } from './common/config/env.config';
+import { EnvValidation } from './common/config/env.joi';
 
 @Module({
   imports: [
 
     ConfigModule.forRoot({
-      load: [ EnvConfiguration ]
+      load: [ EnvConfiguration ],
+      validationSchema: EnvValidation
     }),
 
     ServeStaticModule.forRoot({

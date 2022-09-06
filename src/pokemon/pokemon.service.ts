@@ -18,7 +18,9 @@ export class PokemonService {
     private readonly _env: ConfigService
   ) {
     
-    this._limit = this._env.get('limit_default');
+    this._limit = +this._env.get<number>('limit_default');
+
+    //  console.log( { limit:  +this._env.get<number>('limit_default')} );
 
   }
 
